@@ -1,37 +1,37 @@
 package datamanagement;
 
 public class Unit implements IUnit {
-    private String uc;
-    private String UN;
+    private String unitCode_;
+    private String unitName_;
     private float co2;
     private float co1;
     private float co4;
     private float co3;
     private float co5;
-    private int a1, a2, ex;
+    private int asg1w_, asg2w_, examW_;
 	
-    private StudentUnitRecordList rs;
+    private StudentUnitRecordList records_;
 
     public Unit(String UC, String un, float f1, float f2, float f3, float f4,
 	float f5, int i1, int i2, int i3, StudentUnitRecordList rl) {
 
-	uc = UC;
-	UN = un;
+	unitCode_ = UC;
+	unitName_ = un;
 	co2 = f1;
 	co1 = f2;
 	this.co4 = f3;
 	co3 = f4;
 	this.co5 = f5;
 	this.setAssessmentWeights(i1, i2, i3);
-	rs = rl == null ? new StudentUnitRecordList() : rl;
+	records_ = rl == null ? new StudentUnitRecordList() : rl;
     }
 
     public String getUnitCode() {
-	return this.uc;
+	return this.unitCode_;
     }
 
     public String getUnitName() {
-    return this.UN;
+    return this.unitName_;
     }
 
     public void setPsCutoff1(float cutoff) {
@@ -80,11 +80,11 @@ public class Unit implements IUnit {
     }
 
     public void addStudentRecord(IStudentUnitRecord record) {
-	rs.add(record);
+	records_.add(record);
     }
 
     public IStudentUnitRecord getStudentRecord(int studentID) {
-	for (IStudentUnitRecord r : rs) {
+	for (IStudentUnitRecord r : records_) {
             if (r.getStudentID() == studentID)
             return r;
         }
@@ -92,22 +92,22 @@ public class Unit implements IUnit {
     }
 
     public StudentUnitRecordList listStudentRecords() {
-	return rs;
+	return records_;
     }
 
     @Override
     public int getAsg1Weight() {
-	return a1;
+	return asg1w_;
     }
 
     @Override
     public int getAsg2Weight() {
-	return a2;
+	return asg2w_;
     }
 
     @Override
     public int getExamWeight() {
-        return ex;
+        return examW_;
     }
 
     @Override
@@ -120,9 +120,9 @@ public class Unit implements IUnit {
 	if (a1 + a2 + ex != 100) {
             throw new RuntimeException("Assessment weights must add to 100");
 	}
-        this.a1 = a1;
-        this.a2 = a2;
-        this.ex = ex;			
+        this.asg1w_ = a1;
+        this.asg2w_ = a2;
+        this.examW_ = ex;			
     }
 	
     private void setCutoffs( float ps, float cr, float di, float hd, float ae) {
@@ -151,9 +151,9 @@ public class Unit implements IUnit {
     public String getGrade(float f1, float f2, float f3) {
 	float t = f1 + f2 + f3;
 		
-	if (f1 < 0 || f1 > a1 ||
-            f2 < 0 || f2 > a2 ||
-            f3 < 0 || f3 > ex ) {
+	if (f1 < 0 || f1 > asg1w_ ||
+            f2 < 0 || f2 > asg2w_ ||
+            f3 < 0 || f3 > examW_ ) {
             throw new RuntimeException("marks cannot be less than zero or greater than assessment weights");
 	}
 
