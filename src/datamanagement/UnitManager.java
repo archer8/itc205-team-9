@@ -1,13 +1,13 @@
 package datamanagement;
 
 import java.util.List;
-import org.jdom.*;
+import org.jdom.Element;
 
 public class UnitManager {
 
-	private static UnitManager self = null;
+        private static UnitManager self = null;
 
-	private UnitMap UM;
+        private UnitMap UM;
 
 	public static UnitManager UM() {
 		if (self == null)

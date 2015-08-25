@@ -8,12 +8,12 @@ import org.jdom.output.XMLOutputter;
 import java.io.IOException;
 import org.jdom.JDOMException;
 
-public class XMLManager {
-private static XMLManager self = null;
+public class XMLManager<Document> {
+private static XMLManager<?> self = null;
 
 
-        private Document doc;
-        public static XMLManager getXML() { if (self == null ) self = new XMLManager(); return self;
+        private org.jdom.Document doc;
+        public static XMLManager<?> getXML() { if (self == null ) self = new XMLManager<Object>(); return self;
 }
     private XMLManager() {init();
 
@@ -45,7 +45,7 @@ throw new RuntimeException("DBMD: XMLManager : init : JDOMException");}
 throw new RuntimeException("DBMD: XMLManager : init : IOException");
         }  
                 }      
-    public Document getDocument() {
+    public org.jdom.Document getDocument() {
         return doc;
     }
     

@@ -1,7 +1,7 @@
 package datamanagement;
 
-import org.jdom.*;
 import java.util.List;
+import org.jdom.*;
 public class StudentManager {
     private static StudentManager self = null;
 

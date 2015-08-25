@@ -1,6 +1,7 @@
 package datamanagement;
 
-public interface IStudent {
+@SuppressWarnings("hiding")
+public interface IStudent<StudentUnitRecordList> {
 
     public Integer getID();
 
@@ -13,6 +14,6 @@ public interface IStudent {
     public void addUnitRecord( IStudentUnitRecord record );
     public IStudentUnitRecord getUnitRecord( String unitCode );
 
-    public StudentUnitRecordList getUnitRecords();
+    public datamanagement.StudentUnitRecordList getUnitRecords();
 
 }
