@@ -12,14 +12,20 @@ public class StudentUnitRecord implements IStudentUnitRecord {
 	this.setAsg2(asg2);
 	this.setExam(exam);
     }
+    
+    
 
     public Integer getStudentID() {
 	return studentId_;
     }
+    
+    
 
     public String getUnitCode() {
 	return unitCode_;
     }
+    
+    
 
     public void setAsg1(float a1) {
 	if (a1 < 0 || a1 > UnitManager.UM().getUnit(unitCode_).getAsg1Weight()) {
@@ -27,10 +33,14 @@ public class StudentUnitRecord implements IStudentUnitRecord {
 	}
 	this.asg1_ = a1;
     }
+    
+    
 
     public float getAsg1() {
         return asg1_;
     }
+    
+    
 
     public void setAsg2(float a2) {
 	if (a2 < 0 || a2 > UnitManager.UM().getUnit(unitCode_).getAsg2Weight()) {
@@ -38,10 +48,14 @@ public class StudentUnitRecord implements IStudentUnitRecord {
 	}
         this.asg2_ = a2;
     }
+    
+    
 
     public float getAsg2() {
 	return asg2_;
     }
+    
+    
 
     public void setExam(float ex) {
         if (ex < 0 || ex > UnitManager.UM().getUnit(unitCode_).getExamWeight()) {
@@ -49,12 +63,18 @@ public class StudentUnitRecord implements IStudentUnitRecord {
 	}
         this.exam_ = ex;
     }
+    
+    
 
     public float getExam() {
         return exam_;
     }
+    
+    
 
     public float getTotal() {
 	return asg1_ + asg2_ + exam_;
     }
+    
+    
 }

@@ -8,21 +8,29 @@ public class UnitManager {
     private static UnitManager self = null;
 
     private UnitMap unitMap_;
+    
+    
 
     public static UnitManager UM() {
 	if (self == null)
 	self = new UnitManager();
 	return self;
     }
+    
+    
 
     private UnitManager() {
 	unitMap_ = new UnitMap();
     }
+    
+    
 
     public IUnit getUnit(String uc) {
 	IUnit iu = unitMap_.get(uc);
 	return iu != null ? iu : createUnit(uc);
     }
+    
+    
 
     private IUnit createUnit(String unitCode) {
         IUnit iu;
@@ -54,6 +62,8 @@ public class UnitManager {
 
         throw new RuntimeException("DBMD: createUnit : unit not in file");
     }
+    
+    
 
     public UnitMap getUnits() {
 
@@ -70,5 +80,7 @@ public class UnitManager {
 	} // unit maps are filled with PROXY units
     return unitMap;
     }
+    
+    
 
 }

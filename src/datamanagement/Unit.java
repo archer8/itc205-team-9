@@ -11,6 +11,8 @@ public class Unit implements IUnit {
     private int asg1w_, asg2w_, examW_;
 	
     private StudentUnitRecordList records_;
+    
+    
 
     public Unit(String UC, String un, float f1, float f2, float f3, float f4,
 	float f5, int i1, int i2, int i3, StudentUnitRecordList rl) {
@@ -25,63 +27,93 @@ public class Unit implements IUnit {
 	this.setAssessmentWeights(i1, i2, i3);
 	records_ = rl == null ? new StudentUnitRecordList() : rl;
     }
+    
+    
 
     public String getUnitCode() {
 	return this.unitCode_;
     }
+    
+    
 
     public String getUnitName() {
     return this.unitName_;
     }
+    
+    
 
     public void setPsCutoff1(float cutoff) {
         this.co2 = cutoff;
     }
+    
+    
 
     public float getPsCutoff() {
 	return this.co2;
     }
+    
+    
 
     public void setCrCutoff(float cutoff) {
 	this.co1 = cutoff;
     }
+    
+    
 
     public float getCrCutoff() {
         return this.co1;
     }
+    
+    
 
     public void setDiCutoff(float cutoff) {
 	this.co4 = cutoff;
     }
+    
+    
 
     public float getDiCuttoff() {
 	return this.co4;
     }
+    
+    
 
     public void HDCutoff(float cutoff) {
 	this.co3 = cutoff;
     }
+    
+    
 
     public void setHdCutoff(float cutoff) {
 	this.co3 = cutoff;
     }
+    
+    
 
     public float getHdCutoff() {
 	return this.co3;
 
     }
+    
+    
 
     public void setAeCutoff(float cutoff) {
 	this.co5 = cutoff;
     }
+    
+    
 
     public float getAeCutoff() {
         return this.co5;
     }
+    
+    
 
     public void addStudentRecord(IStudentUnitRecord record) {
 	records_.add(record);
     }
+    
+    
 
     public IStudentUnitRecord getStudentRecord(int studentID) {
 	for (IStudentUnitRecord r : records_) {
@@ -90,25 +122,35 @@ public class Unit implements IUnit {
         }
         return null;
     }
+    
+    
 
     public StudentUnitRecordList listStudentRecords() {
 	return records_;
     }
+    
+    
 
     @Override
     public int getAsg1Weight() {
 	return asg1w_;
     }
+    
+    
 
     @Override
     public int getAsg2Weight() {
 	return asg2w_;
     }
+    
+    
 
     @Override
     public int getExamWeight() {
         return examW_;
     }
+    
+    
 
     @Override
     public void setAssessmentWeights(int a1, int a2, int ex) {
@@ -124,6 +166,8 @@ public class Unit implements IUnit {
         this.asg2w_ = a2;
         this.examW_ = ex;			
     }
+    
+    
 	
     private void setCutoffs( float ps, float cr, float di, float hd, float ae) {
 	if (ps < 0 || ps > 100 ||
@@ -147,6 +191,8 @@ public class Unit implements IUnit {
 	}
 
     }
+    
+    
 	
     public String getGrade(float f1, float f2, float f3) {
 	float t = f1 + f2 + f3;
@@ -172,5 +218,6 @@ public class Unit implements IUnit {
             return "HD";
     }
 
+    
 	
 }

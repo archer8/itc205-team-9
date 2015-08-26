@@ -1,6 +1,6 @@
 package datamanagement;
 
-//import org.jdom.Document;
+// import org.jdom.Document;
 import org.jdom.input.SAXBuilder;
 import java.io.FileWriter;
 import org.jdom.output.Format;
@@ -13,11 +13,21 @@ private static XMLManager<?> self = null;
 
 
     private org.jdom.Document doc;
-    public static XMLManager<?> getXML() { if (self == null ) self = new XMLManager<Object>(); return self;
+    
+    
+    
+    public static XMLManager<?> getXML() { 
+        if (self == null ) self = new XMLManager<Object>(); return self;
     }
-    private XMLManager() {init();
+    
+    
+    
+    private XMLManager() {
+        init();
 
     }
+    
+    
 
     public void init() {
         String s = AppProperties.getInstance().getProperties().getProperty("XMLFILE");
@@ -37,9 +47,13 @@ private static XMLManager<?> self = null;
         }  
     }
     
+    
+    
     public org.jdom.Document getDocument() {
         return doc;
     }
+    
+    
     
     public void saveDocument() {
         String xmlfile = AppProperties.getInstance().getProperties().getProperty("XMLFILE");
@@ -53,4 +67,7 @@ private static XMLManager<?> self = null;
         throw new RuntimeException("DBMD: XMLManager : saveDocument : error writing to file");
         }
     }
+    
+    
+    
 }

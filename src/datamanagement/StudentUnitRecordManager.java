@@ -13,17 +13,23 @@ public class StudentUnitRecordManager {
     public static StudentUnitRecordManager instance() {
         if (recordManager_ == null ) recordManager_ = new StudentUnitRecordManager(); return recordManager_;
     }
+    
+    
 
     private StudentUnitRecordManager() {
         recordMap_ = new StudentUnitRecordMap();
         unitRecord_ = new java.util.HashMap<>();
         studentRecord_ = new java.util.HashMap<>();
     }
+    
+    
             
     public IStudentUnitRecord getStudentUnitRecord( Integer studentID, String unitCode ) {
         IStudentUnitRecord iRecord = recordMap_.get(studentID.toString()+unitCode);
         return iRecord != null ? iRecord : createStudentUnitRecord(studentID, unitCode);
     }
+    
+    
 
     private IStudentUnitRecord createStudentUnitRecord( Integer uid, String sid ) {
         IStudentUnitRecord iRecord;
@@ -39,6 +45,8 @@ public class StudentUnitRecordManager {
         throw new RuntimeException("DBMD: createStudent : student unit record not in file");
     }
     
+    
+    
     public StudentUnitRecordList getRecordsByUnit( String unitCode ) {
         StudentUnitRecordList recs = unitRecord_.get(unitCode);
         
@@ -52,6 +60,8 @@ public class StudentUnitRecordManager {
         unitRecord_.put(unitCode, recs); // be careful - this could be empty
         return recs;
     }
+    
+    
 
     public StudentUnitRecordList getRecordsByStudent( Integer studentID ) {
         StudentUnitRecordList recs = studentRecord_.get(studentID);
@@ -65,6 +75,8 @@ public class StudentUnitRecordManager {
         return recs;
             
     }
+    
+    
 
     public void saveRecord( IStudentUnitRecord iRec ) {
         for (Element element : (List<Element>) XMLManager.getXML().getDocument().getRootElement().getChild("studentUnitRecordTable").getChildren("record")) {
@@ -72,11 +84,14 @@ public class StudentUnitRecordManager {
                 element.setAttribute("asg1", new Float(iRec.getAsg1()).toString());
                 element.setAttribute("asg2", new Float(iRec.getAsg2()).toString());
                 element.setAttribute("exam", new Float(iRec.getExam()).toString());
-                XMLManager.getXML().saveDocument(); //write out the XML file for continuous save
+                XMLManager.getXML().saveDocument(); // write out the XML file for continuous save
                 return;
             }
         }
         
         throw new RuntimeException("DBMD: saveRecord : no such student record in data");
     }
+    
+    
+    
 }
