@@ -33,8 +33,12 @@ public class StudentUnitRecordManager {
 
     private IStudentUnitRecord createStudentUnitRecord( Integer uid, String sid ) {
         IStudentUnitRecord iRecord;
+       
+        
         for (Element element : (List<Element>) ( XMLManager.getXML().getDocument()).getRootElement().getChild("studentUnitRecordTable").getChildren("record")) {
-            if (uid.toString().equals(element.getAttributeValue("sid")) && sid.equals(element.getAttributeValue("uid"))) {
+            boolean isStuID = (uid.toString() .equals(element.getAttributeValue("sid")));
+            boolean isUnitID = (sid.toString() .equals(element.getAttributeValue("uid")));
+            if (isStuID == true && isUnitID == true) {
                 iRecord = new StudentUnitRecord( new Integer(element.getAttributeValue("sid")),element.getAttributeValue("uid"),
                         new Float(element.getAttributeValue("asg1")).floatValue(),
                         new Float(element.getAttributeValue("asg2")).floatValue(),
@@ -80,7 +84,9 @@ public class StudentUnitRecordManager {
 
     public void saveRecord( IStudentUnitRecord iRec ) {
         for (Element element : (List<Element>) XMLManager.getXML().getDocument().getRootElement().getChild("studentUnitRecordTable").getChildren("record")) {
-            if (iRec.getStudentID().toString().equals(element.getAttributeValue("sid")) && iRec.getUnitCode().equals(element.getAttributeValue("uid"))) {
+            boolean sRecIsCorrect = (iRec.getStudentID().toString().equals(element.getAttributeValue("sid")));
+            boolean uRecIsCorrect = (iRec.getUnitCode().equals(element.getAttributeValue("uid")));
+            if (sRecIsCorrect == true && uRecIsCorrect == true) {
                 element.setAttribute("asg1", new Float(iRec.getAsg1()).toString());
                 element.setAttribute("asg2", new Float(iRec.getAsg2()).toString());
                 element.setAttribute("exam", new Float(iRec.getExam()).toString());
