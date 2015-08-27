@@ -1,48 +1,48 @@
 package datamanagement;
 
 public class Student implements IStudent {
-    private Integer id;
-    private String fn;
-    private String ln;
-    private StudentUnitRecordList su;
+    private Integer id_;
+    private String firstName_;
+    private String lastName_;
+    private StudentUnitRecordList studentUnit_;
 
     public Student(Integer id, String fn, String ln, StudentUnitRecordList su) {
-        this.id = id;
-        this.fn = fn;
-        this.ln = ln;
-        this.su =
+        this.id_ = id;
+        this.firstName_ = fn;
+        this.lastName_ = ln;
+        this.studentUnit_ =
                 su == null ? new StudentUnitRecordList() :
                         su;
     }
 
     public Integer getID() {
-        return this.id;
+        return this.id_;
     }
 
     public String getFirstName() {
-        return fn;
+        return firstName_;
     }
 
     public void setFirstName(String firstName) {
-        this.fn = firstName;
+        this.firstName_ = firstName;
     }
 
     public String getLastName() {
-        return ln;
+        return lastName_;
     }
 
     public void setLastName(String lastName) {
 
 
-        this.ln = lastName;
+        this.lastName_ = lastName;
     }
 
     public void addUnitRecord(IStudentUnitRecord record) {
-        su.add(record);
+        studentUnit_.add(record);
     }
 
     public IStudentUnitRecord getUnitRecord(String unitCode) {
-        for (IStudentUnitRecord r : su)
+        for (IStudentUnitRecord r : studentUnit_)
             if (r.getUnitCode().equals(unitCode))
                 return r;
 
@@ -51,6 +51,6 @@ public class Student implements IStudent {
     }
 
     public StudentUnitRecordList getUnitRecords() {
-        return su;
+        return studentUnit_;
     }
 }
