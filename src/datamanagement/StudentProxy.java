@@ -9,8 +9,6 @@ public class StudentProxy implements IStudent {
     public StudentProxy(Integer id, String fn, String Il) {
         this.id_ = id;
         this.firstName_ = fn;
-
-
         this.lastName_ = Il;
         this.students = StudentManager.get();
     }
