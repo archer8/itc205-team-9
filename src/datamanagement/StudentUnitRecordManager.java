@@ -2,7 +2,7 @@ package datamanagement;
 
 import java.util.List;
 
-import org.jdom.*;
+import org.jdom.Element;
 
 public class StudentUnitRecordManager {
 
@@ -12,7 +12,9 @@ public class StudentUnitRecordManager {
     private java.util.HashMap<Integer, StudentUnitRecordList> sr;
 
     public static StudentUnitRecordManager instance() {
-        if (s == null) s = new StudentUnitRecordManager();
+        if (s == null){
+            s = new StudentUnitRecordManager();
+        }
         return s;
     }
 
@@ -31,7 +33,12 @@ public class StudentUnitRecordManager {
         IStudentUnitRecord ir;
         for (Element el : (List<Element>) XMLManager.getXML().getDocument().getRootElement().getChild("studentUnitRecordTable").getChildren("record")) {
             if (uid.toString().equals(el.getAttributeValue("sid")) && sid.equals(el.getAttributeValue("uid"))) {
-                ir = new StudentUnitRecord(new Integer(el.getAttributeValue("sid")), el.getAttributeValue("uid"), new Float(el.getAttributeValue("asg1")).floatValue(), new Float(el.getAttributeValue("asg2")).floatValue(), new Float(el.getAttributeValue("exam")).floatValue());
+                ir = new StudentUnitRecord(
+                        new Integer(el.getAttributeValue("sid")), el.getAttributeValue("uid"),
+                        new Float(el.getAttributeValue("asg1")).floatValue(),
+                        new Float(el.getAttributeValue("asg2")).floatValue(),
+                        new Float(el.getAttributeValue("exam")).floatValue()
+                );
                 rm.put(ir.getStudentID().toString() + ir.getUnitCode(), ir);
                 return ir;
             }
@@ -47,20 +54,29 @@ public class StudentUnitRecordManager {
             if (unitCode.equals(el.getAttributeValue("uid")))
                 recs.add(new StudentUnitRecordProxy(new Integer(el.getAttributeValue("sid")), el.getAttributeValue("uid")));
         }
-        if (recs.size() > 0)
+        if (recs.size() > 0) {
             ur.put(unitCode, recs); // be careful - this could be empty
+        }
+
         return recs;
     }
 
     public StudentUnitRecordList getRecordsByStudent(Integer studentID) {
         StudentUnitRecordList recs = sr.get(studentID);
-        if (recs != null) return recs;
+        if (recs != null) {
+            return recs;
+        }
         recs = new StudentUnitRecordList();
-        for (Element el : (List<Element>) XMLManager.getXML().getDocument().getRootElement().getChild("studentUnitRecordTable").getChildren("record"))
-            if (studentID.toString().equals(el.getAttributeValue("sid")))
+        for (Element el : (List<Element>) XMLManager.getXML().getDocument().getRootElement().getChild("studentUnitRecordTable").getChildren("record")) {
+            if (studentID.toString().equals(el.getAttributeValue("sid"))) {
                 recs.add(new StudentUnitRecordProxy(new Integer(el.getAttributeValue("sid")), el.getAttributeValue("uid")));
-        if (recs.size() > 0)
+            }
+        }
+
+
+        if (recs.size() > 0) {
             sr.put(studentID, recs); // be careful - this could be empty
+        }
         return recs;
     }
 
