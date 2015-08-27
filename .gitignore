@@ -18,3 +18,5 @@
 itc205-team-9.iml
 
 .idea/codeStyleSettings.xml
+
+*.class
