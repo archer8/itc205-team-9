@@ -32,8 +32,6 @@ public class Student implements IStudent {
     }
 
     public void setLastName(String lastName) {
-
-
         this.lastName_ = lastName;
     }
 

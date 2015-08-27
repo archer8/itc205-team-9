@@ -12,9 +12,9 @@ public class StudentManager {
     private java.util.HashMap<String, StudentMap> um;
 
     public static StudentManager get() {
-        if (self == null)
-
+        if (self == null) {
             self = new StudentManager();
+        }
         return self;
     }
 
@@ -31,9 +31,12 @@ public class StudentManager {
     }
 
     private Element getStudentElement(Integer id) {
-        for (Element el : (List<Element>) XMLManager.getXML().getDocument().getRootElement().getChild("studentTable").getChildren("student"))
-            if (id.toString().equals(el.getAttributeValue("sid")))
+        for (Element el : (List<Element>) XMLManager.getXML().getDocument().getRootElement().getChild("studentTable").getChildren("student")) {
+            if (id.toString().equals(el.getAttributeValue("sid"))) {
                 return el;
+            }
+        }
+
         return null;
     }
 
@@ -55,7 +58,9 @@ public class StudentManager {
         Element el = getStudentElement(id);
 
 
-        if (el != null) return new StudentProxy(id, el.getAttributeValue("fname"), el.getAttributeValue("lname"));
+        if (el != null) {
+            return new StudentProxy(id, el.getAttributeValue("fname"), el.getAttributeValue("lname"));
+        }
         throw new RuntimeException("DBMD: createStudent : student not in file");
     }
 
