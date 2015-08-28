@@ -1,6 +1,7 @@
 package datamanagement;
 
 public class StudentUnitRecord implements IStudentUnitRecord {
+
     private Integer studentId_;
     private String unitCode_;
     private float asg1_, asg2_, exam_;
@@ -71,9 +72,11 @@ public class StudentUnitRecord implements IStudentUnitRecord {
     
     
 
+
     public float getExam() {
         return exam_;
     }
+
     
     
 
@@ -82,4 +85,5 @@ public class StudentUnitRecord implements IStudentUnitRecord {
     }
     
     
+
 }
