@@ -17,32 +17,48 @@ public class StudentProxy implements IStudent {
         return id_;
     }
 
+
+
     public String getFirstName() {
         return firstName_;
     }
+
+
 
     public String getLastName() {
         return lastName_;
     }
 
+
+
     public void setFirstName(String firstName) {
         students.getStudent(id_).setFirstName(firstName);
     }
+
+
 
     public void setLastName(String lastName) {
         students.getStudent(id_).setLastName(lastName);
     }
 
 
+
     public void addUnitRecord(IStudentUnitRecord record) {
         students.getStudent(id_).addUnitRecord(record);
     }
+
+
 
     public IStudentUnitRecord getUnitRecord(String unitCode) {
         return students.getStudent(id_).getUnitRecord(unitCode);
     }
 
+
+
     public StudentUnitRecordList getUnitRecords() {
         return students.getStudent(id_).getUnitRecords();
     }
+
+
+
 }

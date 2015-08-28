@@ -16,39 +16,63 @@ public class Student implements IStudent {
     }
 
     public Integer getID() {
+
         return this.id_;
     }
 
+
+
     public String getFirstName() {
+
         return firstName_;
     }
+
+
+
 
     public void setFirstName(String firstName) {
         this.firstName_ = firstName;
     }
 
+
+
     public String getLastName() {
+
         return lastName_;
     }
 
+
+
     public void setLastName(String lastName) {
+
         this.lastName_ = lastName;
     }
 
+
+
     public void addUnitRecord(IStudentUnitRecord record) {
+
         studentUnit_.add(record);
     }
 
+
+
     public IStudentUnitRecord getUnitRecord(String unitCode) {
         for (IStudentUnitRecord r : studentUnit_)
-            if (r.getUnitCode().equals(unitCode))
+            if (r.getUnitCode().equals(unitCode)) {
                 return r;
+            }
 
         return null;
 
     }
 
+
+
     public StudentUnitRecordList getUnitRecords() {
         return studentUnit_;
     }
+
+
+
 }
