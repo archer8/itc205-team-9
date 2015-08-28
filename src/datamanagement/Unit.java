@@ -169,9 +169,9 @@ public class Unit implements IUnit {
     
 	
     private void setCutoffs( float ps, float cr, float di, float hd, float ae) {
-        boolean cutoffsAreValid = (ps > 0 || ps < 100 || cr > 0 || cr < 100 || di > 0 || di < 100 || hd > 0 || hd < 100 || ae > 0 || ae < 100);
+      
         
-	if (cutoffsAreValid == false) {
+	if (ps > 0 || ps < 100 || cr > 0 || cr < 100 || di > 0 || di < 100 || hd > 0 || hd < 100 || ae > 0 || ae < 100) {
             throw new RuntimeException("Assessment cutoffs cant be less than zero or greater than 100");
 	}
 	if (ae >= ps) {
@@ -193,8 +193,8 @@ public class Unit implements IUnit {
 	
     public String getGrade(float f1, float f2, float f3) {
 	float t = f1 + f2 + f3;
-	boolean marksAreValid = (f1 > 0 || f1 < asg1w_ || f2 > 0 || f2 < asg2w_ || f3 > 0 || f3 < examW_);	
-	if (marksAreValid == false) {
+		
+	if (f1 < 0 || f1 > asg1w_ || f2 < 0 || f2 > asg2w_ || f3 < 0 || f3 > examW_) {
             throw new RuntimeException("marks cannot be less than zero or greater than assessment weights");
 	}
 
