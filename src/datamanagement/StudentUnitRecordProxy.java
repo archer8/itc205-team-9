@@ -1,6 +1,7 @@
 package datamanagement;
 
 public class StudentUnitRecordProxy implements IStudentUnitRecord {
+
     private Integer studentID_;
     private String unitCode_;
     private StudentUnitRecordManager mngr_;
@@ -64,6 +65,7 @@ public class StudentUnitRecordProxy implements IStudentUnitRecord {
     public float getTotal() {
         return mngr_.getStudentUnitRecord(studentID_, unitCode_).getTotal();
     }
+
 
 
 }
